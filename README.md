@@ -36,3 +36,19 @@ assets/Yaroslavna-Soldatova-CV.docx
 ## Git
 
 Основная ветка репозитория: `main`.
+
+## Деплой
+
+Сайт публикуется через `GitHub Pages` и workflow:
+
+- `.github/workflows/deploy-pages.yml`
+
+Логика простая:
+
+1. Любой пуш в `main` запускает GitHub Actions.
+2. Workflow собирает статический бандл в `dist/`.
+3. GitHub Pages публикует содержимое `dist/`.
+
+Если Pages еще не включен в настройках репозитория, нужно один раз выбрать:
+
+- `Settings -> Pages -> Build and deployment -> Source -> GitHub Actions`
