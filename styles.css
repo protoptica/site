@@ -154,7 +154,7 @@ h3,
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.75fr);
   gap: 32px;
-  align-items: end;
+  align-items: start;
   padding-top: 48px;
   min-height: calc(100vh - 96px);
 }
