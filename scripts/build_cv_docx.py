@@ -1,6 +1,6 @@
+from pathlib import Path
+
 from docx import Document
-from docx.enum.section import WD_SECTION
-from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
@@ -11,7 +11,6 @@ from docx.shared import Inches, Pt, RGBColor
 ACCENT = RGBColor(188, 95, 58)
 TEXT = RGBColor(33, 40, 51)
 MUTED = RGBColor(88, 103, 122)
-LIGHT = RGBColor(230, 232, 235)
 
 
 def set_cell_border(cell, **kwargs):
@@ -75,17 +74,6 @@ def set_run_font(run, size=None, bold=None, color=None, name="Arial", italic=Non
         run.font.italic = italic
     if color is not None:
         run.font.color.rgb = color
-
-
-def add_para(doc, text="", style=None, after_space=0, before_space=0, line=1.15):
-    p = doc.add_paragraph(style=style)
-    p.paragraph_format.space_after = Pt(after_space)
-    p.paragraph_format.space_before = Pt(before_space)
-    p.paragraph_format.line_spacing = line
-    if text:
-        run = p.add_run(text)
-        set_run_font(run, size=11, color=TEXT)
-    return p
 
 
 def add_heading(doc, label, title):
@@ -158,6 +146,9 @@ def add_tag_row(doc, items):
 
 
 def main():
+    repo_root = Path(__file__).resolve().parent.parent
+    out = repo_root / "assets" / "Yaroslavna-Soldatova-CV.docx"
+
     doc = Document()
     section = doc.sections[0]
     section.page_width = Inches(8.5)
@@ -223,8 +214,8 @@ def main():
     add_job(
         doc,
         "Частная стоматология",
-        "Product Manager · внутреннюю платформу перевожу в потенциальный внешний продукт",
-        "01.2026 — н.в.",
+        "Product Manager · part-time",
+        "04.2026 — н.в.",
         "Веду проект на стыке продуктового аудита, стратегии и legacy-трансформации: от разбора "
         "критического сбоя в коммуникациях до оценки рыночного потенциала платформы.",
         [
@@ -239,10 +230,10 @@ def main():
     add_job(
         doc,
         "TeamLeaders",
-        "Strategic Consultant",
-        "10.2024 — 03.2026",
-        "Работала с фаундерами и C-level компаний с оборотом 1 млрд+ над продуктовой стратегией, "
-        "приоритетами роста и системой принятия решений.",
+        "Strategic Consultant · part-time",
+        "01.2026 — н.в.",
+        "Работаю с фаундерами и C-level компаний с оборотом 1 млрд+ над продуктовой стратегией, "
+        "приоритетами роста, системой принятия решений и оптимизацией бизнес-процессов.",
         [
             "Собирала из разрозненных инициатив ясный контур решений и приоритетов.",
             "Переводила обсуждения с фаундерами и C-level в гипотезы, аналитические задачи и roadmap.",
@@ -255,8 +246,8 @@ def main():
         doc,
         "Третье Мнение",
         "Senior Product Owner",
-        "12.2023 — 10.2024",
-        "Отвечала за логику развития направления, продуктовую стратегию, roadmap, интеграции, UX, "
+        "10.2024 — 03.2026",
+        "Отвечала за развитие направления, продуктовую стратегию, roadmap, интеграции, UX, "
         "внедрение и техподдержку AI-продуктов для клиник. Работала напрямую с CEO и CPO, принимала "
         "решения по развитию направления и соединяла коммерческую, продуктовую и операционную части "
         "в единый рабочий поток.",
@@ -306,9 +297,9 @@ def main():
     skills_p = doc.add_paragraph()
     skills_p.paragraph_format.space_after = Pt(10)
     skills_text = (
-        "Product strategy, Product management, Prioritization, Roadmap, Discovery, JTBD, "
-        "Customer Development, Stakeholder management, AI / B2B / legacy-системы, "
-        "stop/go-оценка направлений, риск-менеджмент."
+        "Product strategy, Product management, Prioritization, Roadmap, Discovery, Delivery, JTBD, "
+        "Customer Development, UX, Stakeholder management, AI / B2B / legacy-системы, "
+        "data-driven decision, риск-менеджмент."
     )
     skills_run = skills_p.add_run(skills_text)
     set_run_font(skills_run, size=10.5, color=TEXT)
@@ -331,7 +322,6 @@ def main():
     lang_run = lang_p.add_run("Английский — B1 (Intermediate)")
     set_run_font(lang_run, size=10.5, color=TEXT)
 
-    out = "Yaroslavna-Soldatova-CV.docx"
     doc.save(out)
     print(out)
 
