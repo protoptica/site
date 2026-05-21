@@ -152,7 +152,7 @@ h3,
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.75fr);
+  grid-template-columns: minmax(0, 1.34fr) minmax(360px, 0.72fr);
   gap: 32px;
   align-items: start;
   padding-top: 48px;
@@ -169,9 +169,10 @@ h3,
 }
 
 .hero h1 {
-  font-size: clamp(2.7rem, 5.9vw, 5rem);
-  line-height: 0.93;
-  max-width: 10.5ch;
+  font-size: clamp(1.8rem, 2.55vw, 2.75rem);
+  line-height: 0.94;
+  max-width: 12.2ch;
+  text-wrap: balance;
 }
 
 .hero h1 span {
@@ -249,7 +250,7 @@ h3,
 .portrait-card {
   position: relative;
   overflow: hidden;
-  min-height: 480px;
+  min-height: 520px;
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   background: #d9cebf;
@@ -562,6 +563,7 @@ h3,
 
   .hero h1 {
     max-width: 12ch;
+    text-wrap: initial;
   }
 
   .topbar {
@@ -589,7 +591,7 @@ h3,
   }
 
   .hero h1 {
-    font-size: clamp(2.2rem, 11vw, 3.7rem);
+    font-size: clamp(1.85rem, 7.4vw, 2.55rem);
   }
 
   .button,
