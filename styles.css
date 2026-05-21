@@ -135,10 +135,10 @@ h3,
   display: inline-flex;
   align-items: center;
   gap: 20px;
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(244, 240, 232, 0.86);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .topnav a {
