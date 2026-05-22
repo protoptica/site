@@ -342,7 +342,12 @@ h3,
 }
 
 .results-strip {
-  padding-top: 0;
+  padding-top: 16px;
+  padding-bottom: 64px;
+}
+
+#impact {
+  padding-top: 48px;
 }
 
 .results-grid {
